@@ -26,3 +26,14 @@ instacart %>%
     x = ~aisle, y = ~n, type = "bar"
   )
 ```
+
+## Boxplot
+```{r}
+instacart %>% 
+  filter(product_name %in% c("Pink Lady Apples", "Coffee Ice Cream")) %>% 
+  group_by(product_name, order_dow) %>% 
+  plot_ly(
+    x = ~order_dow, y = ~order_hour_of_day, type = "box"
+  )
+```
+
