@@ -16,3 +16,13 @@ library(plotly)
 data("instacart")
 ```
 
+## Barplot
+```{r}
+instacart %>% 
+  count(aisle) %>% 
+  filter(n > 10000) %>% 
+  mutate(aisle = fct_reorder(aisle, n)) %>% 
+  plot_ly(
+    x = ~aisle, y = ~n, type = "bar"
+  )
+```
