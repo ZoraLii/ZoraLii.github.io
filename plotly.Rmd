@@ -37,3 +37,13 @@ instacart %>%
   )
 ```
 
+## Scatterplot
+```{r}
+instacart %>% 
+  filter(product_name == "Spring Water") %>% 
+  group_by(order_dow, order_hour_of_day) %>%
+  plot_ly(
+    x = ~order_dow, type = "histogram", width = 0.1
+  )
+
+```
