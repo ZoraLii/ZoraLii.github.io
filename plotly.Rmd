@@ -45,5 +45,4 @@ instacart %>%
   plot_ly(
     x = ~order_dow, type = "histogram", width = 0.1
   )
-
 ```
