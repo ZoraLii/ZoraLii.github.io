@@ -25,7 +25,13 @@ Column {data-width=650}
 ### Chart A
 
 ```{r}
-
+instacart %>% 
+  count(aisle) %>% 
+  filter(n > 10000) %>% 
+  mutate(aisle = fct_reorder(aisle, n)) %>% 
+  plot_ly(
+    x = ~aisle, y = ~n, type = "bar"
+  )
 ```
 
 Column {data-width=350}
@@ -34,12 +40,22 @@ Column {data-width=350}
 ### Chart B
 
 ```{r}
-
+instacart %>% 
+  filter(product_name %in% c("Pink Lady Apples", "Coffee Ice Cream")) %>% 
+  group_by(product_name, order_dow) %>% 
+  plot_ly(
+    x = ~order_dow, y = ~order_hour_of_day, type = "box"
+  )
 ```
 
 ### Chart C
 
 ```{r}
-
+instacart %>% 
+  filter(product_name == "Spring Water") %>% 
+  group_by(order_dow, order_hour_of_day) %>%
+  plot_ly(
+    x = ~order_dow, type = "histogram", width = 0.1
+  )
 ```
 
